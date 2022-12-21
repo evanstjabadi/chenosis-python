@@ -1,0 +1,33 @@
+name: Lint & Test Code
+
+on: [push]
+
+jobs:
+  lint-and-test-code:
+    name: Lint & Test Code
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+
+      - name: Setup Just
+        uses: extractions/setup-just@v1
+
+      - name: Install Dependencies
+        run: pip install flake8 black isort httpx responses pytest
+
+      - name: Run Code Linting Test
+        run: |
+          flake8 .
+          isort --diff --check .
+          black --diff --check .
+          mypy .
+
+      - name: Run Tests
+        run: |
+          pytest .
