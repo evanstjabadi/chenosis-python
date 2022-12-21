@@ -20,7 +20,7 @@ class ChenosisClient:
     
     @lru_cache
     def authenticate(self, client_id: str, client_secret: str) -> str:
-        authentication_path = "/client-credentials/accesstoken"
+        authentication_path = "/oauth/client"
         url = self.host+authentication_path
         
         headers = {
