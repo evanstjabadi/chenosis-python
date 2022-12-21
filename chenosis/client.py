@@ -42,3 +42,6 @@ class ChenosisClient:
             raise InvalidCredentials(response.text or response.json())
         
         return response.json()
+    
+    def get_access_token(self) -> str:
+        return self.authentication_response["access_token"]
