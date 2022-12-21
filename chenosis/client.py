@@ -11,11 +11,7 @@ class ChenosisClient:
     A synchronous REST client for MTN Chenosis APIs
     """
 
-    host: str = None
-    client_id: str = None
-    client_secret: str = None
-    access_token: str = None
-    authentication_response: Dict[str, Any] = None
+    authentication_response: Dict[str, Any] = {}
 
     def __init__(self, host: str, client_id: str, client_secret: str) -> None:
         self.host = host
@@ -24,7 +20,7 @@ class ChenosisClient:
         )
 
     @lru_cache
-    def authenticate(self, client_id: str, client_secret: str) -> str:
+    def authenticate(self, client_id: str, client_secret: str) -> Dict:
         authentication_path = "/oauth/client"
         url = self.host + authentication_path
 

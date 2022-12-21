@@ -23,7 +23,7 @@ jobs:
 
       - name: Run Code Linting Test
         run: |
-          flake8
+          flake8 .
           isort --diff --check .
           black --diff --check .
           mypy .
