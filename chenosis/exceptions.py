@@ -12,3 +12,11 @@ class InvalidCredentials(ChenosisException):
     """
 
     pass
+
+
+class ChenosisAPIError(ChenosisException):
+    """
+    Raised for client and server side errors
+    """
+
+    pass
