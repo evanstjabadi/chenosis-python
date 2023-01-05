@@ -1,6 +1,6 @@
 # MTN Chenosis API
 
-> NB: Not affiliated with MTN's official Chenosis Platform (23 Dec 2022)
+> NB: Not affiliated with MTN's official Chenosis Platform (05 Jan 2023)
 
 A python client for MTN's Chenosis platform: https://chenosis.io.
 
@@ -27,5 +27,5 @@ print(response)
 ```
 
 ## Reporting Issues:
- # Copy stock library 
 
+You can open issues on the GitHub repository for library-level issues and contact Chenosis support for any issues with the API itself.
