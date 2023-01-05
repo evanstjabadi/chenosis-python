@@ -3,7 +3,7 @@ from typing import Any, Dict
 
 import httpx
 
-from chenosis.exceptions import InvalidCredentials
+from chenosis.exceptions import ChenosisAPIError, InvalidCredentials
 
 
 class ChenosisClient:
@@ -32,10 +32,44 @@ class ChenosisClient:
 
         response = httpx.post(url=url, headers=headers, params=params, data=data)
 
-        if not response.is_success:
+        if response.is_error:
             raise InvalidCredentials(response.text or response.json())
 
         return response.json()
 
     def get_access_token(self) -> str:
         return self.authentication_response["access_token"]
+
+    def get_network_information(self, phone_number: str) -> Dict:
+        """
+        Retrieve network related information of subscriber as identified by phoneNumber.
+        """
+        path = f"/mobile/subscriber/{phone_number}/home-location"
+        url = self.host + path
+
+        access_token = self.get_access_token()
+        headers = {"Authorization": access_token}
+
+        response = httpx.get(url=url, headers=headers)
+
+        if response.is_error:
+            raise ChenosisAPIError(response.text or response.json())
+
+        return response.json()
+
+    def get_mobile_carrier_details(self, phone_number: str) -> Dict:
+        """
+        Retrieve mobile carrier details of subscriber as identified by phoneNumber.
+        """
+        path = f"/{phone_number}/verify"
+        url = self.host + path
+
+        access_token = self.get_access_token()
+        headers = {"Authorization": access_token}
+
+        response = httpx.get(url=url, headers=headers)
+
+        if response.is_error:
+            raise ChenosisAPIError(response.text or response.json())
+
+        return response.json()
