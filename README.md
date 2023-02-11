@@ -34,3 +34,5 @@ You can open issues on the GitHub repository for library-level issues and contac
 1. Update tests and readme examples with more response data once the chenosis sandbox/production is up and running (11 Feb 2023).
 2. Use pydantic for response models.
 3. Add more endpoints once POC is acceptable.
+4. Add more client methods.
+5. Add an async client.
