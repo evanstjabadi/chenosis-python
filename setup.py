@@ -23,5 +23,5 @@ setup(
     package_data={"chenosis": ["py.typed"]},
     include_package_data=True,
     zip_safe=False,
-    install_requires=["httpx~=0.21.2"],
+    install_requires=["httpx~=0.23.3"],
 )
