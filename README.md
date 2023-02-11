@@ -29,3 +29,8 @@ print(response)
 ## Reporting Issues:
 
 You can open issues on the GitHub repository for library-level issues and contact Chenosis support for any issues with the API itself.
+
+### TODO List
+1. Update tests and readme examples with more response data once the chenosis sandbox/production is up and running (11 Feb 2023).
+2. Use pydantic for response models.
+3. Add more endpoints once POC is acceptable.

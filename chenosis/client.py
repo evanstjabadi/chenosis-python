@@ -21,7 +21,7 @@ class ChenosisClient:
 
     @lru_cache
     def authenticate(self, client_id: str, client_secret: str) -> Dict:
-        authentication_path = "/oauth/client"
+        authentication_path = "/oauth/client/accesstoken"
         url = self.host + authentication_path
 
         headers = {"content-type": "application/x-www-form-urlencoded"}
@@ -48,7 +48,7 @@ class ChenosisClient:
         url = self.host + path
 
         access_token = self.get_access_token()
-        headers = {"Authorization": access_token}
+        headers = {"Authorization": f"Bearer {access_token}"}
 
         response = httpx.get(url=url, headers=headers)
 
@@ -65,7 +65,7 @@ class ChenosisClient:
         url = self.host + path
 
         access_token = self.get_access_token()
-        headers = {"Authorization": access_token}
+        headers = {"Authorization": f"Bearer {access_token}"}
 
         response = httpx.get(url=url, headers=headers)
 
