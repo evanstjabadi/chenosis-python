@@ -1,0 +1,14 @@
+# lint
+black
+flake8
+isort
+
+# mypy
+mypy
+
+
+# testing
+pytest
+coverage
+mock
+responses
